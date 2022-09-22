@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Quản lý người dùng</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon"
+    href="http://tabula.bold-themes.com/wavy/wp-content/uploads/sites/3/2019/04/cropped-favicon-1-32x32.png"
+    sizes="32x32">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;1,700&display=swap"
+    rel="stylesheet">
+  <!-- Bootstrap 4 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <!-- Animate -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="./css/admin.css">
+  <style>
+    .span-tb {
+      display: none;
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="checkbox" id="check">
+  <div id="main">
+    <div class="bg-1">
+      <img src="./img/yellow_top_wave_01.png" class="img-fluid" alt="">
+    </div>
+    <!-- Header -->
+    <header class="animate__animated animate__fadeIn wow">
+      <div class="container">
+        <label for="check" class="toggle">
+          <span class="close"><i class="fas fa-times"></i></span>
+          <span class="open"><i class="fas fa-bars"></i></span>
+        </label>
+        <nav>
+          <!-- logo -->
+          <div class="logo">
+            <img src="./img/crest.png">
+          </div>
+
+          <!-- menu -->
+          <div class="nav-menu">
+            <a href="./index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Courses</a>
+            <a href="#">Blog</a>
+            <a href="#">Shop</a>
+            <a href="#">Elements</a>
+            <a href="./admin.html">Admin</a>
+          </div>
+
+          <!-- phone -->
+          <div class="btn-phone">
+            <button class="btn">
+              <i class="fas fa-phone"></i>
+              (+1) 555 234-8765
+            </button>
+          </div>
+
+          <!-- icon -->
+          <div class="icon">
+            <a href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="display-4 my-4">
+        Thực hành javascript - axios với dự án quản lý trung tâm
+      </div>
+      <!-- Phan tab menu -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" href="#DanhSachNguoiDung" role="tab" data-toggle="tab">Danh sách người dùng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#DanhSachKhoaHoc" role="tab" data-toggle="tab">Danh sách khóa học</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#ThongKe" role="tab" data-toggle="tab">Thống kê</a>
+        </li>
+      </ul>
+      <br />
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <!--Danh sách người dùng -->
+        <div role="tabpanel" class="tab-pane  in active" id="DanhSachNguoiDung">
+          <div class="row">
+            <div class="col-md-8">
+              <!-- BEGIN BUTTOM THÊM MỚI -->
+              <button id="btnThemNguoiDung" class="btn" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-plus mr-1"></i>
+                Thêm Mới
+              </button>
+              <!-- END BUTTON THÊM MỚI -->
+            </div>
+            <div class="col-md-4">
+              <!-- BEGIN TÌM KIẾM -->
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Nhập từ khóa" aria-label="Recipient's username"
+                  aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+                </div>
+              </div>
+              <!-- END TÌM KIẾM -->
+            </div>
+          </div>
+          <div class="clear-fix"></div>
+          <div class="tblNguoiDung" id="tblNguoiDung">
+            <!-- BEGIN TABLE NGƯỜI DÙNG -->
+            <table class="table table-bordered">
+              <thead>
+                <th>STT</th>
+                <th>Tài khoản</th>
+                <th>Mật khẩu</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Ngôn ngữ</th>
+                <th>Tên loại</th>
+                <th>Action</th>
+              </thead>
+              <tbody id="tblDanhSachNguoiDung"></tbody>
+            </table>
+            <!-- END TABLE NGƯỜI DÙNG -->
+          </div>
+          <br />
+        </div>
+        <!-- Kết thúc danh sách người dùng -->
+        <!-- Danh sách khóa học -->
+        <div role="tabpanel" class="tab-pane fade" id="DanhSachKhoaHoc">
+          <span>Đang cập nhật...</span>
+        </div>
+        <!-- Kết thúc danh sách khóa học -->
+        <!-- Thống kê -->
+        <div role="tabpanel" class="tab-pane fade" id="ThongKe">
+          <span>Đang cập nhật...</span>
+        </div>
+        <!-- Kết thúc thống kê -->
+      </div>
+
+      <!--KetThuc Tabmenu-->
+
+      <!-- The Modal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <input id="IdNguoiDung" type="text" hidden>
+              <div class="form-group">
+                <label>Tài khoản</label>
+                <input id="TaiKhoan" class="form-control" placeholder="Nhập vào tài khoản" />
+                <span class="span-tb" id="tb-taiKhoan"></span>
+              </div>
+              <div class="form-group">
+                <label>Họ tên</label>
+                <input id="HoTen" class="form-control" placeholder="Nhập vào họ tên" />
+                <span class="span-tb" id="tb-hoTen"></span>
+              </div>
+              <div class="form-group">
+                <label>Mật khẩu</label>
+                <input id="MatKhau" class="form-control" placeholder="Nhập vào mật khẩu" type="password" />
+                <span class="span-tb" id="tb-matKhau"></span>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input id="Email" class="form-control" placeholder="Nhập vào Email" />
+                <span class="span-tb" id="tb-email"></span>
+              </div>
+              <div class="form-group">
+                <label>Hình Ảnh</label>
+                <input id="HinhAnh" class="form-control" placeholder="Nhập vào hình ảnh" />
+                <span class="span-tb" id="tb-hinhAnh"></span>
+              </div>
+              <div class="form-group">
+                <label for="">Loại Người Dùng: </label>
+                <select class="form-control" id="loaiNguoiDung">
+                  <option value="">Chọn loại người dùng</option>
+                  <option value="GV">Giáo viên</option>
+                  <option value="HV">Học viên</option>
+                </select>
+                <span class="span-tb" id="tb-loaiND"></span>
+              </div>
+              <div class="form-group">
+                <label for="">Loại Ngôn Ngữ: </label>
+                <select class="form-control" id="loaiNgonNgu">
+                  <option value="">Chọn ngôn ngữ</option>
+                  <option>ITALIAN</option>
+                  <option>FRENCH</option>
+                  <option>JAPANESE</option>
+                  <option>CHINESE</option>
+                  <option>RUSSIAN</option>
+                  <option>SWEDEN</option>
+                  <option>SPANISH</option>
+                </select>
+                <span class="span-tb" id="tb-ngonNgu"></span>
+              </div>
+              <div class="form-group">
+                <label>Mô tả</label>
+                <textarea name="" id="MoTa" class="form-control" placeholder="Nhập vào mô tả"></textarea>
+                <span class="span-tb" id="tb-moTa"></span>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container"></div>
+    <style>
+      #container {
+        min-width: 310px;
+        max-width: 800px;
+        height: 400px;
+        margin: 0 auto;
+      }
+    </style>
+    <div class="bg-4">
+      <img src="./img/accent_bottom_wave_01.png" class="img-fluid" alt="">
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row footer-link">
+          <!-- contact us -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 animate__animated animate__fadeIn wow" data-wow-delay="0.2s">
+            <h3 class="title-footer">Contact us</h3>
+            <div class="footer-contact">
+              <span class="icon-footer-contact">
+                <i class="fas fa-map-marker-alt"></i>
+              </span>
+              <span class="txt-info">Franklin St, Greenpoint Ave</span>
+            </div>
+            <div class="footer-contact">
+              <span class="icon-footer-contact">
+                <i class="fas fa-phone"></i>
+              </span>
+              <span class="txt-info">+2342 5446 67</span>
+            </div>
+            <div class="footer-contact">
+              <span class="icon-footer-contact">
+                <i class="fas fa-clock"></i>
+              </span>
+              <span class="txt-info">Monday - Friday: 8 AM - 5 PM</span>
+            </div>
+            <div class="social-network">
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-youtube"></i>
+            </div>
+          </div>
+
+          <!-- quick links -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 animate__animated animate__fadeIn wow" data-wow-delay="0.4s">
+            <h3 class="title-footer">Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Courses</a></li>
+              <li><a href="#">Schedule</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <!-- about -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 animate__animated animate__fadeIn wow" data-wow-delay="0.6s">
+            <h3 class="title-footer">About</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Get Quote</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- newsletter -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 animate__animated animate__fadeIn wow" data-wow-delay="0.8s">
+            <h3 class="title-footer">Newsletter</h3>
+            <div class="newsletter">
+              <div class="txt-email">
+                <input type="text" class="form-control" placeholder="Your email">
+              </div>
+              <div class="subscribe">
+                <button class="btn">SUBSCRIBE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- wowjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+
+  <!-- scroll nav -->
+  <script type="text/javascript">
+    window.addEventListener("scroll", function () {
+      var header = document.querySelector("header");
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
+
+  <script src="./js/models/Member.js"></script>
+  <script src="./js/services/listMemberAPI.js"></script>
+  <script src="./js/services/validation.js"></script>
+  <script src="./js/controllers/admin.js"></script>
+</body>
+
+</html>

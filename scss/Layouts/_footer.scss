@@ -1,0 +1,140 @@
+footer {
+	background: url("../../img/footer_background.jpg") center / cover no-repeat;
+	width: 100%;
+	height: 530px;
+	color: #fff;
+	& .col-lg-3 {
+		margin-top: 100px;
+	}
+
+	& .title-footer {
+		@include title($color-white, $fs-6, $fw-3);
+		margin-bottom: 30px;
+	}
+
+	// Contact Us
+	& .footer-contact {
+		font-family: "Roboto", sans-serif;
+		& .icon-footer-contact {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			margin-bottom: 10px;
+			& i {
+				font-size: $fs-5;
+			}
+		}
+		& .txt-info {
+			font-size: $fs-3;
+		}
+	}
+
+	& .social-network {
+		margin-top: 20px;
+		& i {
+			margin-right: 12px;
+			transition: all 0.1s linear;
+			cursor: pointer;
+			&:hover {
+				color: $color-dark-1;
+			}
+		}
+	}
+
+	// Quick links & About
+	& ul li {
+		list-style: none;
+		margin-bottom: 15px;
+		& a {
+			font-family: "Roboto", sans-serif;
+			font-size: $fs-3;
+			color: $color-white;
+			text-decoration: none;
+			transition: all 0.5s;
+			&:hover {
+				opacity: 0.5;
+				text-decoration: none;
+				color: $color-white;
+			}
+		}
+	}
+
+	// Newsletter
+	.newsletter {
+		width: 90%;
+		margin-top: 90px;
+		& .txt-email input::placeholder {
+			color: $color-white;
+		}
+		& .txt-email input {
+			text-align: center;
+			background: transparent;
+			color: $color-white;
+			border-radius: 50px;
+			height: 50px;
+			font-size: 12px;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			&:focus {
+				border-color: rgba(255, 255, 255, 1);
+				box-shadow: none;
+			}
+		}
+
+		& .subscribe {
+			& .btn {
+				width: 100%;
+				height: 50px;
+				margin: 10px 0;
+				box-shadow: 0 0 0 3em $color-white inset;
+				background-color: $color-violet;
+				@include title($color-dark-1, 12px, $fw-2);
+				letter-spacing: 1px;
+				&:hover {
+					color: $color-white;
+					border: 1px solid $color-white;
+					box-shadow: 0 0 0 0.1em $color-white inset;
+				}
+			}
+		}
+	}
+}
+
+// Responsive
+// lg
+@include responsive("large-down") {
+	footer {
+		height: 900px;
+		padding-top: 50px;
+	}
+}
+
+// md
+@include responsive("medium-down") {
+	footer {
+		height: 850px;
+		padding-top: 20px;
+	}
+}
+
+// sm
+@include responsive("small-down") {
+	footer {
+		height: 1400px;
+		padding-top: 70px;
+
+		.icon-footer-contact i,
+		.txt-info {
+			font-size: 12px;
+		}
+
+		& ul li a {
+			font-size: 12px;
+		}
+
+		.newsletter .subscribe {
+			& .btn {
+				font-size: 10px;
+			}
+		}
+	}
+}

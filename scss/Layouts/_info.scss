@@ -1,0 +1,48 @@
+.info {
+	background: #dcd1f0;
+
+	& .col-lg-3 {
+		padding: 20px;
+		z-index: 5;
+	}
+}
+
+// Responsive
+// xl
+@include responsive("extra-large-down") {
+    .info {
+        .card-body {
+            padding: 0 15px 30px;
+        }
+	}
+}
+
+// lg
+@include responsive("large-down") {
+	.info {
+        .card-body {
+            padding: 30px;
+			& .card-sub-title {
+				margin-top: 5px;
+			}
+        }
+	}
+}
+
+// md
+@include responsive("medium-down") {
+	.info {
+		.card-text {
+			line-height: 1.5em;
+		}
+	}
+}
+
+// sm
+@include responsive("small-down") {
+	.info {
+		.card-text {
+			font-size: 13px;
+		}
+	}
+}

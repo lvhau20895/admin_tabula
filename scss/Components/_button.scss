@@ -1,0 +1,18 @@
+.btn {
+	box-shadow: 0 0 0 3em $color-violet inset;
+    margin: 0 10px;
+	padding: 10px 20px;
+    outline: none;
+	border: 1px solid transparent;
+	border-radius: 50px;
+	font-size: $fs-3;
+	font-weight: $fw-1;
+    background-color: $color-white;
+	color: $color-white;
+    transition: all .3s ease;
+	&:hover {
+		color: $color-violet;
+        border: 1px solid $color-violet;
+		box-shadow: 0 0 0 0.1em $color-violet inset;
+	}
+}

@@ -1,0 +1,52 @@
+.carousel {
+	margin: -130px 0 20px;
+	& .sub_title {
+		@include title($color-violet, 16.5px, $fw-2);
+		margin-bottom: 5px;
+	}
+	& .title {
+		@include title($color-dark-2, 57px, $fw-3);
+	}
+}
+
+// Responsive
+// xl
+@include responsive("extra-large-down") {
+	.carousel {
+		margin: -100px 0 100px;
+		& .title {
+			@include title($color-dark-2, 48px, $fw-3);
+		}
+	}
+}
+
+// lg
+@include responsive("large-down") {
+	.carousel {
+		margin: 10px 0 120px;
+		& .sub_title {
+			@include title($color-violet, 15px, $fw-2);
+			margin-bottom: 5px;
+		}
+		& .title {
+			@include title($color-dark-2, 46px, $fw-3);
+		}
+	}
+}
+
+// md
+@include responsive("medium-down") {
+	.carousel {
+		margin: 30px 0 150px;
+	}
+}
+
+// sm
+@include responsive("small-down") {
+	.carousel {
+		margin: 30px 0 180px;
+		& .title {
+			@include title($color-dark-2, 38px, $fw-3);
+		}
+	}
+}

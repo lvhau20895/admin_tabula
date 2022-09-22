@@ -1,0 +1,148 @@
+.contact {
+    margin-top: 100px;
+    & .img-contact {
+        & img {
+            width: 100%;
+            height: 550px;
+        }
+    }
+
+    // form contact
+	& form {
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 30px 30px -10px #00000033;
+        padding: 40px 25px;
+        border: none;
+        border-radius: 20px;
+        & .title-contact {
+            @include title($color-dark-2, 35px, $fw-3);
+            text-align: center;
+        }
+
+        & .form-control {
+            padding: 0 35px;
+            height: 40px;
+            border-radius: 20px;
+            font-size: 13px;
+            &:focus {
+                box-shadow: unset;
+                border-color: #0000004d;
+            }
+        }
+        & .text {
+            height: 80px;
+        }
+
+        & .form-icon {
+            display: inline-block;
+            font-size: 13px;
+            transform: translate(15px, 30px);
+            z-index: 1;
+            color: $color-violet;
+        }
+
+        & .btn {
+            margin: 50px 0 20px;
+            padding: 15px 60px;
+            font-size: 12px;
+            font-weight: $fw-2;
+            letter-spacing: 1px;
+        }
+	}
+}
+
+// Responsive
+// xl
+@include responsive("extra-large-down") {
+    .contact {
+        margin: 200px 0 70px;
+        & form {
+            & .title-contact {
+                @include title($color-dark-2, 28px, $fw-3);
+                text-align: left;
+            }
+        }   
+    }
+}
+
+// lg
+@include responsive("large-down") {
+    .contact {
+        margin: 300px 0 110px;
+        & .img-contact {
+            width: 600px;
+            & img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        & form {
+            & .title-contact {
+                @include title($color-dark-2, 30px, $fw-3);
+                text-align: left;
+            }
+        }
+    }
+}
+
+// md
+@include responsive("medium-down") {
+    .contact {
+        margin: 300px 0 160px;
+        & .img-contact {
+            width: 550px;
+            & img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        & form {
+            & .title-contact {
+                @include title($color-dark-2, 30px, $fw-3);
+                text-align: left;
+            }
+
+            .form-icon,
+            .form-control,
+            .btn {
+                font-size: 11px;
+            }
+
+            & .btn {
+                margin: 50px 0 20px;
+                padding: 15px 60px;
+                font-weight: $fw-2;
+                letter-spacing: 1px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+// sm
+@include responsive("small-down") {
+    .contact {
+        margin-top: 350px;
+        & .img-contact {
+            width: 300px;
+            & img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        form {
+            .form-icon,
+            .form-control {
+                font-size: 10px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 10px;
+            }
+        }
+    }
+}

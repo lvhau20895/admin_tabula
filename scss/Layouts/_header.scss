@@ -1,0 +1,169 @@
+#check {
+	visibility: hidden;
+	display: none;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	transition: all 0.8s;
+	&.sticky {
+		background: $color-white;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		height: 80px;
+		display: flex;
+		align-items: center;
+		& .logo {
+			display: none;
+		}
+	}
+
+	.toggle {
+		display: none;
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+
+		.logo img {
+			width: 80px;
+		}
+
+		.nav-menu {
+			margin-left: auto;
+			a {
+				text-decoration: none;
+				color: $color-dark-1;
+				font-size: $fs-3;
+				font-weight: $fw-2;
+				margin-right: 50px;
+				transition: all 0.5s;
+				&:hover {
+					color: $color-violet;
+				}
+			}
+		}
+
+		.icon a {
+			font-size: $fs-3;
+			color: $color-dark-1;
+			margin-left: 10px;
+			transition: all 0.5s;
+			&:hover {
+				color: $color-violet;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+// responsive
+// xl
+@include responsive("extra-large-down") {
+	#check:checked ~ #main header nav {
+		transform: translateX(0);
+	}
+
+	#check:checked ~ #main header span {
+		left: 250px;
+	}
+
+	#check:checked ~ #main header .open {
+		display: none;
+	}
+
+	#check:checked ~ #main {
+		left: 250px;
+	}
+
+	#main {
+		position: relative;
+		left: 0;
+		transition: all 0.5s;
+		header {
+			height: 50px;
+			background: $color-white;
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: url("/img/crest.png") center / cover no-repeat;
+				width: 50px;
+				height: 100%;
+				margin: 0 60px;
+			}
+			&.sticky {
+				background: $color-white;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+				height: 50px;
+				& .logo {
+					display: block;
+				}
+				.toggle {
+					display: block;
+					line-height: 50px;
+					span {
+						position: absolute;
+						top: 8px;
+						width: 40px;
+						height: 40px;
+						text-align: center;
+						line-height: 40px;
+						font-size: 30px;
+						background: $color-white;
+						color: $color-violet;
+					}
+				}
+			}
+
+			.toggle {
+				display: block;
+				line-height: 50px;
+				span {
+					position: absolute;
+					width: 40px;
+					height: 40px;
+					text-align: center;
+					line-height: 40px;
+					font-size: 30px;
+					background: $color-white;
+					color: $color-violet;
+				}
+			}
+
+			nav {
+				position: absolute;
+				top: 0;
+				left: 0;
+				flex-direction: column;
+				align-items: center;
+				width: 250px;
+				height: 100vh;
+				background: $color-white;
+				text-align: center;
+				transition: all 0.5s;
+				transform: translateX(-250px);
+
+				.nav-menu {
+					margin: 0;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					margin: 20px 0 30px;
+					a {
+						margin: 10px 0;
+					}
+				}
+
+				.icon {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}
